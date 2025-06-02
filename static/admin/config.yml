@@ -6,42 +6,96 @@ media_folder: "static/images"
 public_folder: "/images"
 
 collections:
+  - name: "config"
+    label: "Site Configuration"
+    files:
+      - label: "Site Settings"
+        name: "site"
+        file: "data/site.json"
+        fields:
+          - { label: "Site Title", name: "title", widget: "string", default: "TEDx Nijmegen" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Welcome Text", name: "welcome_text", widget: "markdown" }
+
   - name: "pages"
     label: "Pages"
     files:
       - label: "Homepage"
         name: "index"
-        file: "content/_index.md"
+        file: "data/homepage.json"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Hero Image", name: "hero_image", widget: "image" }
-          - { label: "Welcome Text", name: "welcome_text", widget: "markdown" }
+          - { label: "Hero Title", name: "hero_title", widget: "string" }
+          - { label: "Hero Subtitle", name: "hero_subtitle", widget: "markdown" }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+
+      - label: "About Page"
+        name: "about"
+        file: "data/about.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "markdown" }
+
+      - label: "Contact Page"
+        name: "contact"
+        file: "data/contact.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "content", widget: "markdown" }
+          - { label: "Email", name: "email", widget: "string", required: false }
+          - { label: "Phone", name: "phone", widget: "string", required: false }
 
   - name: "speakers"
     label: "Speakers"
-    folder: "content/speakers"
+    folder: "data/speakers"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "Image", name: "image", widget: "image" }
+      - { label: "Image", name: "image", widget: "image", required: false }
       - { label: "Topic", name: "topic", widget: "string" }
+      - { label: "Bio", name: "bio", widget: "markdown" }
+      - { label: "Company", name: "company", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
 
   - name: "partners"
     label: "Partners"
-    folder: "content/partners"
+    folder: "data/partners"
     create: true
     slug: "{{slug}}"
     fields:
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "Logo", name: "logo", widget: "image" }
+      - { label: "Logo", name: "logo", widget: "image", required: false }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
 
-  - name: "contact"
-    label: "Contact"
-    files:
-      - label: "Contact Page"
-        name: "contact"
-        file: "content/contact.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "body", widget: "markdown" }
+  - name: "events"
+    label: "Events"
+    folder: "data/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Tickets URL", name: "tickets_url", widget: "string", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: false }
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "data/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Featured Image", name: "image", widget: "image", required: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Content", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: false }

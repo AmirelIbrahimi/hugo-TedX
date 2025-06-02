@@ -1,6 +1,8 @@
 [build]
-  command = "hugo"
-  publish = "public"
+  publish = "."
+  command = "echo 'No build step needed'"
 
-[context.production.environment]
-  HUGO_VERSION = "0.123.7"  # Replace with the Hugo version you want
+[[redirects]]
+  from = "/admin/*"
+  to = "/static/admin/index.html"
+  status = 200
