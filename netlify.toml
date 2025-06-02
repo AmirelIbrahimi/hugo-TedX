@@ -1,8 +1,15 @@
 [build]
   publish = "."
-  command = "echo 'No build step needed'"
+  command = "# No build command needed for static HTML"
 
+# Redirect admin routes to the CMS
 [[redirects]]
   from = "/admin/*"
   to = "/static/admin/index.html"
+  status = 200
+
+# Make sure index.html is served for the root
+[[redirects]]
+  from = "/"
+  to = "/index.html"
   status = 200
