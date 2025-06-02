@@ -1,5 +1,6 @@
 [build]
   command = "echo 'Static site - no build needed'"
+  publish = "public"  # Dit wijst Netlify naar de public map
   ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF ."
 
 # Redirect admin routes to the CMS
@@ -12,4 +13,4 @@
 [[redirects]]
   from = "/"
   to = "/index.html"
-  status = 200
+status = 200
