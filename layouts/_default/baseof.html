@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }}</title>
+  <link rel="stylesheet" href="/css/tailwind.css">
+</head>
+<body>
+<nav class="bg-red-600 p-4">
+  <div class="container mx-auto flex justify-between">
+    <a href="/" class="text-white text-xl font-bold">TEDx Nijmegen</a>
+    <ul class="flex space-x-4">
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL }}" class="text-white hover:text-gray-300">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+</nav>
+<main>
+  {{ block "main" . }}{{ end }}
+</main>
+<footer class="bg-red-600 text-white text-center py-4">
+  <p>&copy; {{ now.Year }} TEDx Nijmegen. All rights reserved.</p>
+</footer>
+</body>
+</html>

@@ -1,14 +1,27 @@
-title = "My New Hugo Site"
+baseURL = "https://your-netlify-site.netlify.app"
+languageCode = "en-us"
+title = "TEDx Nijmegen"
+theme = "default"  # Replace with your theme if needed
 
-[menu]
-  [[menu.main]]
-    identifier = "posts"
-    name = "Posts"
-    url = "/posts"
-    weight = 10
+[params]
+  description = "TEDx Nijmegen website powered by Hugo and Netlify CMS"
 
-  [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about"
-    weight = 20
+[[menu.main]]
+  name = "About"
+  url = "/about/"
+  weight = 1
+
+[[menu.main]]
+  name = "Speakers"
+  url = "/speakers/"
+  weight = 2
+
+[[menu.main]]
+  name = "Partners"
+  url = "/partners/"
+  weight = 3
+
+[[menu.main]]
+  name = "Contact"
+  url = "/contact/"
+  weight = 4
